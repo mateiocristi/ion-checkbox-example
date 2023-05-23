@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="form">
+    roles form {{ form.value | json }}
+  <br>
+  selected roles {{ selectedRoles | json }}
+  <div *ngIf="rolesArray.controls.length > 0">
+    <ion-item *ngFor="let roleGroup of rolesArray.controls; let i = index">
+      <ion-checkbox [checked]="roleGroup.get('checked')!.value" (ionChange)="toggleCheck(i)">{{ roleGroup.get('desc')!.value }}</ion-checkbox>
+    </ion-item>
+  </div>
+  <ion-button (click)="manualCheck()">check </ion-button>
+  </form>
+
+</ion-content>
